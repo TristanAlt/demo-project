@@ -1,7 +1,14 @@
+- job:
+    name: openshift-test
+    parent: base-openshift
+    run: test.yaml
+    vars:
+      base_image: "python:3.6"
+
 - project:
     check:
       jobs:
-        - linters
+        - openshift-test
     gate:
       jobs:
-        - linters
+        - openshift-test
